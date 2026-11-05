@@ -1,0 +1,454 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Batik Indonesia</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #fbf5ed;
+  color: #39271d;
+  line-height: 1.6;
+}
+
+header {
+  background: linear-gradient(135deg, #482217, #a65d32);
+  color: white;
+  text-align: center;
+  padding: 35px 15px;
+}
+
+header h1 {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+nav {
+  background: #321810;
+  color: white;
+  text-align: center;
+  padding: 12px;
+}
+
+.container {
+  width: 92%;
+  max-width: 1200px;
+  margin: 25px auto;
+}
+
+.intro, .penutup {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 22px;
+  box-shadow: 0 3px 10px #00000010;
+}
+
+h2 {
+  color: #713622;
+  margin-bottom: 8px;
+}
+
+#cari {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid #d7b59c;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+#jumlah {
+  margin-bottom: 15px;
+  color: #79533e;
+}
+
+.daftar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+.kartu {
+  background: white;
+  border-radius: 13px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px #00000012;
+}
+
+.foto {
+  display: block;
+  background: #eee0d1;
+}
+
+.foto img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.isi {
+  padding: 16px;
+}
+
+.nomor {
+  display: inline-block;
+  color: #713622;
+  background: #f4e5d7;
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.kartu h3 {
+  color: #713622;
+  margin: 8px 0;
+  font-size: 20px;
+}
+
+.kartu p {
+  font-size: 14px;
+  margin: 7px 0;
+}
+
+.asal {
+  font-weight: bold;
+}
+
+.status {
+  color: #666;
+  font-size: 12px !important;
+}
+
+.tombol {
+  display: inline-block;
+  background: #713622;
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 7px;
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+.tombol:hover {
+  background: #a65d32;
+}
+
+footer {
+  background: #321810;
+  color: white;
+  text-align: center;
+  padding: 22px 12px;
+  margin-top: 30px;
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 25px;
+  }
+
+  .daftar {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🧵 BATIK INDONESIA 🇮🇩</h1>
+  <p>Mengenal keindahan motif dan budaya batik Nusantara</p>
+</header>
+
+<nav>Website Edukasi Budaya Indonesia</nav>
+
+<main class="container">
+
+  <section class="intro">
+    <h2>Apa Itu Batik?</h2>
+    <p>
+      Batik adalah karya seni tekstil yang dibuat menggunakan
+      malam atau lilin untuk membentuk motif pada kain.
+      Setiap daerah mempunyai ciri khas motif, warna, dan makna.
+      Batik Indonesia diakui UNESCO sebagai Warisan Budaya
+      Takbenda Kemanusiaan pada tahun 2009.
+    </p>
+  </section>
+
+  <input id="cari" type="search"
+    placeholder="🔍 Cari nama batik atau daerah asal..."
+    aria-label="Cari batik">
+
+  <p id="jumlah">Menampilkan 15 motif batik</p>
+
+  <section class="daftar" id="daftar"></section>
+
+  <section class="penutup">
+    <h2>Yuk, Lestarikan Batik Indonesia!</h2>
+    <p>
+      Kita dapat melestarikan batik dengan mempelajari motifnya,
+      menghargai para perajin, memakai batik, dan mengenalkan
+      warisan budaya kepada generasi muda.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <p>Website Batik Indonesia</p>
+  <p>Bangga dengan budaya Nusantara.</p>
+</footer>
+
+<script>
+const batik = [
+  {
+    nama: "Batik Parang",
+    asal: "Yogyakarta dan Surakarta",
+    kata: "Batik Parang Indonesia",
+    info: "Motif garis diagonal berulang menyerupai ombak. Batik ini termasuk motif klasik yang terkenal dalam tradisi Jawa."
+  },
+  {
+    nama: "Batik Kawung",
+    asal: "Yogyakarta dan Jawa Tengah",
+    kata: "Batik Kawung Indonesia",
+    info: "Memiliki bentuk oval yang tersusun teratur, menyerupai buah aren. Motifnya terlihat simetris dan geometris."
+  },
+  {
+    nama: "Batik Mega Mendung",
+    asal: "Cirebon, Jawa Barat",
+    kata: "Batik Mega Mendung Cirebon",
+    info: "Memiliki pola awan berlapis dengan warna yang menarik. Motif ini menjadi salah satu ciri khas batik Cirebon."
+  },
+  {
+    nama: "Batik Tujuh Rupa",
+    asal: "Pekalongan, Jawa Tengah",
+    kata: "Batik Pekalongan tujuh rupa",
+    info: "Dikenal dengan ragam motif bunga, tumbuhan, dan unsur alam. Batik Pekalongan mempunyai gaya pesisir yang beragam."
+  },
+  {
+    nama: "Batik Lasem",
+    asal: "Lasem, Rembang",
+    kata: "Batik Lasem merah",
+    info: "Dikenal dengan warna merah yang kuat dan pengaruh budaya Tionghoa. Motifnya dapat berupa burung dan tumbuhan."
+  },
+  {
+    nama: "Batik Sekar Jagad",
+    asal: "Yogyakarta dan Surakarta",
+    kata: "Batik Sekar Jagad",
+    info: "Terdiri atas bidang-bidang dengan corak berbeda yang membentuk satu kesatuan motif yang indah."
+  },
+  {
+    nama: "Batik Truntum",
+    asal: "Surakarta, Jawa Tengah",
+    kata: "Batik Truntum",
+    info: "Memiliki pola kecil menyerupai bintang atau bunga yang tersebar. Motif ini dikenal dalam tradisi pernikahan Jawa."
+  },
+  {
+    nama: "Batik Sidomukti",
+    asal: "Surakarta, Jawa Tengah",
+    kata: "Batik Sidomukti",
+    info: "Motif klasik yang sering digunakan dalam upacara adat Jawa dan berkaitan dengan harapan akan kehidupan yang baik."
+  },
+  {
+    nama: "Batik Ceplok",
+    asal: "Yogyakarta dan Jawa Tengah",
+    kata: "Batik Ceplok Jawa",
+    info: "Mempunyai pola geometris berulang, seperti lingkaran, persegi, atau bentuk bunga yang disusun teratur."
+  },
+  {
+    nama: "Batik Gentongan",
+    asal: "Madura, Jawa Timur",
+    kata: "Batik Gentongan Madura",
+    info: "Batik khas Madura yang dikenal dengan warna berani dan corak beragam. Namanya berkaitan dengan penggunaan gentong dalam proses pewarnaan."
+  },
+  {
+    nama: "Batik Priangan",
+    asal: "Tasikmalaya, Jawa Barat",
+    kata: "Batik Priangan Tasikmalaya",
+    info: "Banyak menggunakan inspirasi tumbuhan dan alam dengan susunan motif yang halus."
+  },
+  {
+    nama: "Batik Besurek",
+    asal: "Bengkulu, Sumatra",
+    kata: "Batik Besurek Bengkulu",
+    info: "Memiliki ciri kaligrafi Arab yang dipadukan dengan hiasan lain, termasuk motif tumbuhan."
+  },
+  {
+    nama: "Batik Jambi",
+    asal: "Jambi, Sumatra",
+    kata: "Batik Jambi motif",
+    info: "Terinspirasi dari tumbuhan, alam, dan budaya Melayu Jambi. Beberapa motifnya dikenal dengan nama tampuk manggis dan angso duo."
+  },
+  {
+    nama: "Batik Bali",
+    asal: "Bali",
+    kata: "Batik Bali tradisional",
+    info: "Memadukan inspirasi alam dan unsur budaya Bali. Motif serta warna batiknya sangat beragam."
+  },
+  {
+    nama: "Batik Betawi",
+    asal: "Jakarta",
+    kata: "Batik Betawi ondel ondel",
+    info: "Mengangkat identitas budaya Betawi melalui motif seperti ondel-ondel, pucuk rebung, dan unsur khas Jakarta."
+  }
+];
+
+const daftar = document.getElementById("daftar");
+const cari = document.getElementById("cari");
+const jumlah = document.getElementById("jumlah");
+
+function tautanFoto(kata) {
+  return "https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search=" +
+    encodeURIComponent(kata);
+}
+
+function buatKartu(item, nomor) {
+  const kartu = document.createElement("article");
+  kartu.className = "kartu";
+
+  const tautan = document.createElement("a");
+  tautan.className = "foto";
+  tautan.href = tautanFoto(item.kata);
+  tautan.target = "_blank";
+  tautan.rel = "noopener noreferrer";
+  tautan.title = "Cari foto " + item.nama;
+
+  const img = document.createElement("img");
+  img.alt = "Foto " + item.nama;
+  img.loading = "lazy";
+  img.src = "https://placehold.co/600x300/F0E0D0/713622?text=" +
+    encodeURIComponent(item.nama);
+
+  img.onerror = function() {
+    this.onerror = null;
+    this.src = "https://placehold.co/600x300/F0E0D0/713622?text=Batik+Indonesia";
+  };
+
+  tautan.appendChild(img);
+
+  const isi = document.createElement("div");
+  isi.className = "isi";
+
+  const label = document.createElement("span");
+  label.className = "nomor";
+  label.textContent = "MOTIF " + String(nomor).padStart(2, "0");
+
+  const judul = document.createElement("h3");
+  judul.textContent = item.nama;
+
+  const asal = document.createElement("p");
+  asal.className = "asal";
+  asal.textContent = "📍 Asal: " + item.asal;
+
+  const info = document.createElement("p");
+  info.textContent = item.info;
+
+  const status = document.createElement("p");
+  status.className = "status";
+  status.textContent = "Tekan foto untuk mencari gambar motif ini.";
+
+  const tombol = document.createElement("a");
+  tombol.className = "tombol";
+  tombol.href = tautanFoto(item.kata);
+  tombol.target = "_blank";
+  tombol.rel = "noopener noreferrer";
+  tombol.textContent = "Cari dan buka foto";
+
+  isi.append(label, judul, asal, info, status, tombol);
+  kartu.append(tautan, isi);
+
+  // Cari gambar yang sesuai dari Wikimedia Commons.
+  // Jika gagal, kartu tetap menyediakan tombol pencarian.
+  const api = new URL("https://commons.wikimedia.org/w/api.php");
+  api.search = new URLSearchParams({
+    action: "query",
+    generator: "search",
+    gsrsearch: item.kata + " filetype:bitmap",
+    gsrnamespace: "6",
+    gsrlimit: "1",
+    prop: "imageinfo",
+    iiprop: "url",
+    iiurlwidth: "700",
+    format: "json",
+    origin: "*"
+  }).toString();
+
+  fetch(api.toString())
+    .then(response => {
+      if (!response.ok) throw new Error("Gambar gagal dimuat");
+      return response.json();
+    })
+    .then(data => {
+      const pages = data.query && data.query.pages
+        ? Object.values(data.query.pages)
+        : [];
+
+      if (!pages.length || !pages[0].imageinfo) {
+        throw new Error("Foto tidak ditemukan");
+      }
+
+      const halaman = pages[0];
+      const gambar = halaman.imageinfo[0];
+      const urlGambar = gambar.thumburl || gambar.url;
+
+      if (!urlGambar) throw new Error("URL foto tidak tersedia");
+
+      img.src = urlGambar;
+      tautan.href = gambar.descriptionurl ||
+        tautanFoto(item.kata);
+      tombol.href = gambar.descriptionurl ||
+        tautanFoto(item.kata);
+      tombol.textContent = "Buka sumber foto";
+      status.textContent = "Foto dari Wikimedia Commons.";
+    })
+    .catch(() => {
+      status.textContent = "Foto otomatis tidak tersedia. Gunakan tombol pencarian.";
+    });
+
+  return kartu;
+}
+
+function tampilkan() {
+  daftar.innerHTML = "";
+
+  const kata = cari.value.toLowerCase().trim();
+
+  const hasil = batik.filter(item =>
+    item.nama.toLowerCase().includes(kata) ||
+    item.asal.toLowerCase().includes(kata) ||
+    item.info.toLowerCase().includes(kata)
+  );
+
+  jumlah.textContent = "Menampilkan " + hasil.length + " motif batik";
+
+  if (hasil.length === 0) {
+    daftar.textContent = "Motif batik tidak ditemukan.";
+    return;
+  }
+
+  hasil.forEach(item => {
+    daftar.appendChild(buatKartu(item, batik.indexOf(item) + 1));
+  });
+}
+
+cari.addEventListener("input", tampilkan);
+tampilkan();
+</script>
+
+</body>
+</html>
+
+
+      
